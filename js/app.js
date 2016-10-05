@@ -1,50 +1,41 @@
-//$(document).foundation()
-
-//$( document ).ready(function() {
-
-	console.log( "document loaded" );
-	var name = 'Margo';
-
-	var Compliment1 = {};
-	Compliment1.quote: 'You are fabulous!',
-	Compliment1.movie: 'movie name 1,
-	Compliment1.year: 2000 
-
-	var Compliment2 = {};
-	Compliment2.quote: 'You are amazing!',
-	Compliment2.movie: 'movie name 2,
-	Compliment2.year: 2012 
-
-	var ComplimentUser = function(name) {
-		alert(Compliment2.quote + ' ' + name);
+$(document).ready(function() {
+	
+	$(document).foundation();
+	
+	var name = '';
+	var compliment_list = [1, 2, 3, 4];
+	var Compliment = {};
+	
+	function newCompliment(name, msg, src, img) {
+		this.name = name;
+		this.msg = msg;
+		this.src = src;
+		this.img = 'assets/' + img;
 	}
-
-	ComplimentUser('Sarah');
-//});
-
-
-// Get today's date
-var d = new Date();
-var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-document.getElementById("weekday").innerHTML = days[d.getDay()];
-
-//document.getElementById("date").innerHTML = Date.today();
-
-
-// On form submit
-/*$('#input-name').submit(function(e) {
-   if($('.errors').is(':visible')){
-        e.preventDefault();
-        // do something else here// some errors are visible :)
-        return false; 
-   }else{
-
-   }*/
-
-$("#input-name input").keypress(function(event) {
-    if (event.which == 13) {
-        event.preventDefault();
-        $("#input-name").submit();
-        console.log('submitted');
-    }
+	
+	newCompliment('comp1', 'Hello- this is message 1', 'Anonymous1', 'bg1.jpg');
+	newCompliment('comp2', 'Hello- this is message 2', 'Anonymous2', 'bg2.jpg');
+	newCompliment('comp3', 'Hello- this is message 3', 'Anonymous3', 'bg3.jpg');
+	newCompliment('comp4', 'Hello- this is message 4', 'Anonymous4', 'bg4.jpg');
+	
+	console.log(compliment_list);
+	console.log(Compliment);
+	
+	// Get name of user
+	$( "#submit-name" ).click(function() {
+		name = document.getElementById('user-name').value;
+		updateMessage();
+	});
+	
+	
+	// Change background and message
+	function updateMessage() {
+		// Select random item from compliments array
+		var randomNumRange = compliment_list.length;
+		var randomItem = Math.floor(Math.random() * randomNumRange);
+		console.log('item = ' + randomItem);
+		Compliment[name] = Compliment[randomItem];
+		$('body').css('background-image', 'url(assets/bg' + randomItem + '.jpg)'); //Compliment[name].img
+	}	
+	
 });
