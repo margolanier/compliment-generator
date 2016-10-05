@@ -1,16 +1,16 @@
-
 @import 'https://fonts.googleapis.com/css?family=Muli:300,400';
 
-*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
-.clearfix:before, .clearfix:after { content: ''; display: table; }
-.clearfix:after { clear: both; }
+html {
+	padding: .3rem .5rem;
+}
 
-html, body {
+body {
 	background: #e4e4e4;
 	color: #02027D;
 	font-family: 'Muli', Helvetica, sans-serif;
 	font-weight: normal;
-	padding: .3rem .5rem;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 h1, h2, h3, h4, h5 {
@@ -18,9 +18,31 @@ h1, h2, h3, h4, h5 {
 	font-weight: normal;
 }
 
-.row {
-	max-width: none;
+#page-title {
+	text-align: center;
 }
+
+#share {
+	text-align: left;
+}
+
+#author {
+	text-align: right;
+}
+
+#form-wrapper {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+#name-input {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+/*
 
 .formWrap {
 	display: table;
@@ -40,32 +62,11 @@ h1, h2, h3, h4, h5 {
 	height: 170px;
 }
 
-.header {
-	position: relative;
-	display: table;
-	width: 100%;
-}
 
-#compliments-title {
-	position: absolute;
-	display: table-cell;
-	top: 0;
-	left: 0;
-	right: 0;
-	margin: 0 auto;
-	float: center;
-}
 
-#compliments-share {
-	display: inline-block;
-	float: left;
-}
+*/
 
-#compliments-author {
-	display: inline-block;
-	float: right;
-}
-
+/*
 .input {
 	position: relative;
 	z-index: 1;
@@ -86,7 +87,7 @@ h1, h2, h3, h4, h5 {
 	border-radius: 0;
 	background: #f0f0f0;
 	color: #aaa;
-	-webkit-appearance: none; /* for box shadows to show on iOS */
+	-webkit-appearance: none;
 }
 
 .input__field:focus {
@@ -123,7 +124,7 @@ h1, h2, h3, h4, h5 {
 	fill: none;
 }
 
-/* Kyo input form */
+
 .input--kyo {
 	z-index: auto;
 }
@@ -178,3 +179,4 @@ h1, h2, h3, h4, h5 {
 	color: #fff;
 	border: 1px solid #b212ac;
 }
+*/
