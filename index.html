@@ -5,50 +5,52 @@
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Title</title>
+	<title>Compliment Generator | margolanier.com</title>
+	<meta name="description" content="An experience to brighten your day.">
+	<meta name="author" content="Margo Lanier">
 	<link rel="stylesheet" href="css/foundation.css">
 	<link rel="stylesheet" href="css/app.css">
 </head>
 
-<body id="body">
+<body>
 	<header>
 		<div class="row">
 			<div id="page-title" class="small-12 medium-8 medium-push-2 columns">
-				<h1>Title</h1>
+				<h1>Title Here</h1>
+				<h1>Happy <span id="weekday"></span>!</h1>
 			</div>
-			
+
 			<div id="share" class="small-12 medium-2 medium-pull-8 columns">
 				<a href="" title=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
 				<a href="" title=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
 				<a href="" title=""><i class="fa fa-email" aria-hidden="true"></i></a> Pay it forward!
 			</div>
-			
+
 			<div id="author" class="small-12 medium-2 columns">
 				Author <a href="" title=""><i class="fa fa-github-alt" aria-hidden="true"></i></a>
 			</div>
 		</div>
 	</header>
-	
-	<div id="form-wrapper" class="row">
-		<form id="get-user-name" class="input-group">
-			<label class="input-group-label">What's your name?</label>
-			<input class="input-group-field" type="text" id="user-name" placeholder="Placeholder text">
-			<div class="input-group-button">
-				<input type="submit" class="button" value="Submit" id="submit-name">
-			</div>
-		</form>
-	</div>
-	
-	<div id="message-wrapper" class="row">
-		<p class="message"></p>
-		<p class="source"></p>
-	</div>
-	
-	<footer>
-		<div class="row">
-			<!--Inspired by ##-->
+
+	<div id="main-content">
+		<div id="form-wrapper">
+			<form id="get-user-name" class="input-group">
+				<label class="input-group-label">What's your name?</label>
+				<input class="input-group-field" type="text" id="user-name" placeholder="Placeholder text">
+				<div class="input-group-button">
+					<input type="submit" class="button" value="Submit" id="submit-name">
+				</div>
+			</form>
 		</div>
-	</footer>
+
+		<div id="message-wrapper">
+			<div id="blurred-bg"></div>
+			<div id="blurred-box">
+				<p class="message">here is the message yadda yadda</p>
+				<p class="source"></p>
+			</div>
+		</div>
+	</div><!-- .main-content -->
 	
 	<script src="js/vendor/jquery.js"></script>
 	<script src="js/vendor/what-input.js"></script>
