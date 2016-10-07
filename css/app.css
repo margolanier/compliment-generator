@@ -3,21 +3,22 @@ html {
 	padding: .3rem .5rem;
 }
 
-body {
-	background: #e4e4e4;
+h1,
+h2,
+h3,
+h4,
+h5 {
 	font-family: 'Muli', Helvetica, sans-serif;
 	font-weight: normal;
 }
 
-body,
-#blurred-bg {
-	/*background-image: url('https://static.pexels.com/photos/6606/flowers-garden-orange-tulips.jpg');*/
+body {
+	/*background: #e4e4e4;*/
+	font-family: 'Muli', Helvetica, sans-serif;
+	font-weight: normal;
+	background-image: url();
 	background-repeat: no-repeat;
 	background-size: cover;
-}
-
-#message-wrapper {
-	position: relative;
 }
 
 #blurred-bg {
@@ -29,6 +30,10 @@ body,
 	z-index: 99;
 	filter: blur(10px);
 	-webkit-filter: blur(10px);
+	background-image: url();
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: none;
 }
 
 #blurred-box {
@@ -38,15 +43,6 @@ body,
 	background: rgb(255, 255, 255);
 	/* IE fallback */
 	background: rgba(255, 255, 255, .3);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-	font-family: 'Muli', Helvetica, sans-serif;
-	font-weight: normal;
 }
 
 #page-title {
@@ -73,5 +69,6 @@ h5 {
 }
 
 #message-wrapper {
+	position: relative;
 	display: none;
 }

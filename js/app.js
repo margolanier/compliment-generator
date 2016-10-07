@@ -9,8 +9,14 @@ $(document).ready(function() {
 	
 	
 	var name = '';
-	var compliment_list = [1, 2, 3, 4];
+	var complimentList = [1, 2, 3, 4];
 	var Compliment = {};
+	var tempBgList= ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg4.jpg'];
+	
+	// Randomly select item
+	var valueRange = complimentList.length;
+	var randomValue = '';
+	var tempURL = '';
 	
 	function newCompliment(movie, quote, src, img) {
 		this.movie = movie;
@@ -24,24 +30,85 @@ $(document).ready(function() {
 	newCompliment('comp3', 'Hello- this is message 3', 'Anonymous3', 'bg3.jpg');
 	newCompliment('comp4', 'Hello- this is message 4', 'Anonymous4', 'bg4.jpg');
 	
-	//console.log(compliment_list);
+	//console.log(complimentList);
 	//console.log(Compliment);
 	
-	// Get name of user
-	$( "#submit-name" ).click(function() {
+	
+	/**
+	 * On form submit:
+	 * Get name of user and update slide content
+	 */
+	$( "#submit-name" ).click(function(e) {
+		e.preventDefault();
 		name = document.getElementById('user-name').value;
+		updateMessage();
+	});
+	$( "#next-compliment" ).click(function(e) {
+		e.preventDefault();
 		updateMessage();
 	});
 	
 	
-	// Change background and message
+	/**
+	 * Select random item
+	 * Don't repeat item until all have been selected once
+	 */
+	/*function generateRandomValue() {
+		var usedValues = [];
+		var pending;
+		var unique = false;
+		
+		// Generate values until it is original to uniqueValues array
+		do {
+			console.log('doing');
+			pending = Math.floor(Math.random() * valueRange);
+			var isThisWorking = $.inArray(pending, usedValues);
+			console.log('is this working? = ' + isThisWorking);
+			if( $.inArray(pending, usedValues) !== -1) {
+				//unique = true;
+				console.log(true);
+				unique++;
+			} else {
+				console.log(false);
+			}
+		}
+		//while (unique !== true);
+		while (unique < 5);
+		
+		randomValue = pending;
+		usedValues.push(randomValue);
+	}*/
+	
+	
+	/**
+	 * Select random item
+	 * Don't repeat item until all have been selected once
+	 */
+	function generateRandomValue() {
+		// Create copy of compliments array to work with
+		var uniqueValues = []
+		for (var i=0; i < complimentList.length; i++) {
+			uniqueValues.push(complimentList[i]);
+		}
+		
+		// Pull from that array and remove the one you use
+		if(uniqueValues.length > 0) {
+			var index = Math.floor(Math.random() * uniqueValues.length)
+			randomValue = uniqueValues[index];
+			randomValue.splice(index, 1);
+		}
+		console.log('rando = ' + randomValue);
+	}
+	
+	
+	/**
+	 * Change background and message
+	 */
 	function updateMessage() {
 		// Select random item from compliments array
-		var randomNumRange = compliment_list.length;
-		var randomItem = Math.floor(Math.random() * randomNumRange);
-		console.log('item = ' + randomItem);
-		Compliment[name] = Compliment[randomItem];
-		var tempURL = 'assets/bg2.jpg';
+		generateRandomValue();
+		//Compliment[name] = Compliment[randomItem];
+		tempURL = 'assets/' + tempBgList[randomItem];
 		$('body').css('background-image', 'url(' + tempURL + ')'); //Compliment[name].img
 		$('#blurred-bg').css('background-image', 'url(' + tempURL + ')');
 		$('#form-wrapper').css('display', 'none');
