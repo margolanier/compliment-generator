@@ -6,10 +6,27 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Compliment Generator | margolanier.com</title>
-	<meta name="description" content="An experience to brighten your day.">
+	<meta name="description" content="An experience to brighten your day!">
 	<meta name="author" content="Margo Lanier">
 	<link rel="stylesheet" href="css/foundation.css">
 	<link rel="stylesheet" href="css/app.css">
+	
+	<!-- Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="<?php echo get_permalink() ?>" />
+	<meta property="og:title" content="Compliment Generator" />
+	<meta property="og:description" content="An experience to brighten your day!" />
+	<meta property="og:image" content="https://www.fillmurray.com/400/350" />
+	<meta property="og:site_name" content="margolanier.com" />
+	
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Compliment Generator">
+	<meta name="twitter:description" content="An experience to brighten your day!">
+	<meta name="twitter:image" content="https://www.fillmurray.com/400/350">
+	<meta name="twitter:creator" content="Margo Lanier">
+	<!--<meta name="twitter:url" content="margolanier.com/compliment-generator">-->
+	
 </head>
 
 <body>
@@ -21,9 +38,16 @@
 			</div>
 
 			<div id="share" class="small-12 medium-2 medium-pull-8 columns">
-				<a href="" title=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-				<a href="" title=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
-				<a href="" title=""><i class="fa fa-email" aria-hidden="true"></i></a> Pay it forward!
+				Pay it forward!
+				<a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://margolanier.com&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!"
+				   target="_blank" title="Share on Facebook" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false">
+					<i class="fa fa-facebook" aria-hidden="true"></i> FB
+				</a>
+				
+				<a href="https://twitter.com/home?status=this%20is%20what%20i%20want%20to%20say%20http%3A//agencyq.com"
+				   target="_blank" title="Share on Twitter" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false">
+					<i class="fa fa-email" aria-hidden="true"></i> TW
+				</a>
 			</div>
 
 			<div id="author" class="small-12 medium-2 columns">
@@ -49,6 +73,11 @@
 				<p class="message" id="compliment"></p>
 				<p class="source"></p>
 				<p><button id="next-compliment" class="button">Next compliment, please</button></p>
+				<p><button id="refresh" class="button">Next compliment, please</button></p>
+				<input type="button" value="Start Over" onClick="window.location.reload()" class="button">
+				<div id="share-app">
+					<p>Share with other humans!</p>
+				</div>
 			</div>
 		</div>
 	</div><!-- .main-content -->

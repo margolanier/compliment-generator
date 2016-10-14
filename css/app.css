@@ -72,3 +72,7 @@ body {
 	position: relative;
 	display: none;
 }
+
+#refresh, #share-app {
+	display: none;
+}
