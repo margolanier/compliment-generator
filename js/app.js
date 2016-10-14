@@ -2,198 +2,133 @@ $(document).ready(function() {
 	
 	$(document).foundation();
 	
-	// Get today's date
+	/**
+	 * Get the date
+	 */
 	var d = new Date();
 	var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 	document.getElementById("weekday").innerHTML = days[d.getDay()];
 	
 	
-	var name = '';
-	var complimentList = [1, 2, 3, 4];
-	var Compliment = {};
-	var tempBgList= ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg4.jpg'];
-	
 	// Randomly select item
-	var valueRange = complimentList.length;
-	var randomValue = '';
-	var tempURL = '';
+	var name = 'name';
+	var lastCompliment;
+	var randomValue;
+	var index;
 	
-	function newCompliment(movie, quote, src, img) {
-		this.movie = movie;
-		this.quote = quote;
-		this.src = src;
-		this.img = 'assets/' + img;
+	/**
+	 * Build construct for Compliment objects
+	 * Create array to hold all compliments
+	 */
+	function newCompliment(msg, img) {
+		return {
+			msg: msg,
+			img: img
+		};
 	}
 	
-	newCompliment('comp1', 'Hello- this is message 1', 'Anonymous1', 'bg1.jpg');
-	newCompliment('comp2', 'Hello- this is message 2', 'Anonymous2', 'bg2.jpg');
-	newCompliment('comp3', 'Hello- this is message 3', 'Anonymous3', 'bg3.jpg');
-	newCompliment('comp4', 'Hello- this is message 4', 'Anonymous4', 'bg4.jpg');
-	
-	//console.log(complimentList);
-	//console.log(Compliment);
+	var allCompliments = [
+		newCompliment(name + ', you are amazing.', 'bg1.jpg'), 
+		newCompliment(name + ', you is kind, you is smart, you is important', 'bg2.jpg'),
+		newCompliment(name + ', you\'re dope AF', 'bg3.jpg'),
+		newCompliment('You are the coolest person ever, ' + name, 'bg4.jpg'),
+	];
 	
 	
 	/**
 	 * On form submit:
-	 * Get name of user and update slide content
+	 * Save name of user, add name to compliment messages
+	 * Shuffle compliments array and display first message
 	 */
 	$( "#submit-name" ).click(function(e) {
 		e.preventDefault();
-		name = document.getElementById('user-name').value;
+		
+		// Get name of user, then hide the form
+		name = document.getElementById('nameOfUser').value;
+		$('#form-wrapper').css('display', 'none');
+		console.log('name = ' + name);
+		
+		// Display the compliment div
+		$('#message-wrapper').css('display', 'block');
+		
+		// Reset compliments list
+		shuffle(allCompliments);
+		index = 0;
 		updateMessage();
 	});
+	
+	
+	/**
+	 * On next button:
+	 * Loop through compliment list
+	 * At end of list, display share screen
+	 */
 	$( "#next-compliment" ).click(function(e) {
 		e.preventDefault();
-		updateMessage();
+		
+		// If there is another compliment in array, get next compliment
+		if (index < allCompliments.length) {
+			updateMessage();
+		} else {
+			getShareScreen();
+		}
 	});
 	
 	
-	/**
-	 * Select random item
-	 * Don't repeat item until all have been selected once
-	 */
-	/*function generateRandomValue() {
-		var usedValues = [];
-		var pending;
-		var unique = false;
+	// Build shuffle method for array
+	function shuffle(array) {
+		var currentIndex = array.length, temporaryValue, randomIndex;
 		
-		// Generate values until it is original to uniqueValues array
-		do {
-			console.log('doing');
-			pending = Math.floor(Math.random() * valueRange);
-			var isThisWorking = $.inArray(pending, usedValues);
-			console.log('is this working? = ' + isThisWorking);
-			if( $.inArray(pending, usedValues) !== -1) {
-				//unique = true;
-				console.log(true);
-				unique++;
-			} else {
-				console.log(false);
-			}
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+			
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+			
+			// Swap it with the current element
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
 		}
-		//while (unique !== true);
-		while (unique < 5);
-		
-		randomValue = pending;
-		usedValues.push(randomValue);
-	}*/
-	
-	
-	/**
-	 * Select random item
-	 * Don't repeat item until all have been selected once
-	 */
-	function generateRandomValue() {
-		// Create copy of compliments array to work with
-		var uniqueValues = []
-		for (var i=0; i < complimentList.length; i++) {
-			uniqueValues.push(complimentList[i]);
-		}
-		
-		// Pull from that array and remove the one you use
-		if(uniqueValues.length > 0) {
-			var index = Math.floor(Math.random() * uniqueValues.length)
-			randomValue = uniqueValues[index];
-			randomValue.splice(index, 1);
-		}
-		console.log('rando = ' + randomValue);
 	}
 	
 	
 	/**
+	 * Get next Compliment object in array
 	 * Change background and message
 	 */
 	function updateMessage() {
-		// Select random item from compliments array
-		generateRandomValue();
-		//Compliment[name] = Compliment[randomItem];
-		tempURL = 'assets/' + tempBgList[randomItem];
-		$('body').css('background-image', 'url(' + tempURL + ')'); //Compliment[name].img
-		$('#blurred-bg').css('background-image', 'url(' + tempURL + ')');
-		$('#form-wrapper').css('display', 'none');
-		$('#message-wrapper').css('display', 'block');
+		var bgImg = 'assets/' + allCompliments[index].img;
+		var compliment = allCompliments[index].msg;
+		
+		// Change background image
+		$('body').css('background-image', 'url(' + bgImg + ')');
+		$('#blurred-bg').css('background-image', 'url(' + bgImg + ')');
+		
+		// Change message
+		document.getElementById('compliment').innerHTML=compliment;
+		
+		index++;
 	}
 	
 	
-/*	movie: "Step Brothers",
-	quote:  "I want to roll you into a little ball and shove you up my vagina.",
-	src: "", 
-	img: "stepBrothers.jpg",
-
-	movie: "Goodfellas",
-	quote:  "Goddamn you are one suave fuck.",
-	src: "",
-	img: "goodfellas.jpg",
-
-	movie: "Office Space",
-	quote: "Boy, that's just a straight shooter with upper management written all over him."
-	src: "", 
-	img: "officeSpace.jpg",
-
-	movie: "Star Wars",
-	quote: "The force is strong with this one.",
-	src: "", 
-	img: "starWars.jpg",
-
-	movie: "The Matrix",
-	quote: "You are the one, *name*.",
-	src: "",
-	img: "matrix.jpg",
-
-	movie: "The Lord of the Rings: The Fellowship of the Ring",
-	quote: "I would rather have one lifetime with you than face all the ages of this world alone.",
-	src: "",
-	img: "lordOfTheRings.jpg",
-
-	movie: "Billy Madison",
-	quote: "That Veronica Vaughn is one piece of ace."
-	src: "",
-	img:"billyMadison",
+	/**
+	 * Display last message
+	 * Option to share or start over
+	 */
+	function getShareScreen() {
+		var bgImg = 'http://www.kemplen.co.uk/the-end/the-end.jpg';
+		var message = 'this is the end.';
+		
+		// Change background image
+		$('body').css('background-image', 'url(' + bgImg + ')');
+		$('#blurred-bg').css('background-image', 'url(' + bgImg + ')');
+		
+		// Change message
+		document.getElementById('compliment').innerHTML=message;
+		$('#next-compliment').css('display', 'none');
+	}
 	
-	movie: "Princess Bride",
-	quote: "There's a shortage of perfect breasts in this world, it'd be a pity to damage yours.",
-	src: "",
-	img:"princessBride.jpg",
-	
-	movie: "Fight Club",
-	quote: "My god, I haven't been fucked like that since grade school.",
-	src: "",
-	img:"fightClub,jpg",
-	
-	movie: "When Harry Met Sally",
-	quote: "I love that it takes you an hour and a half to order a sandwich.",
-	src: "",
-	img:"whenHarryMetSally.jpg",
-	
-	movie: "Wet Hot American Summer",
-	quote: "I love it that sometimes for no reason you're late for school.",
-	src: "",
-	img:"wetHotAmericanSummer.jpg",
-	
-	movie: "Napolean Dynamite",
-	quote: "I see you're drinking one percent [milk].  Is that because you think you're fat?  Because you're not. You could be drinking whole if you wanted to."
-	src: "",
-	img:"napoleanDynamite.jpg"
-	
-	movie: "Juno",
-	quote: "You're like the coolest person I've ever met, and you don't even have to try.",
-	src: "",
-	img: "juno.jpg"
-	
-	movie: "The Graduate",
-	quote: "You're the most attractive of all my parents' friends.  I mean that.",
-	src: "",
-	img: "graduate.jpg",
-	
-	movie: "Anchorman",
-	quote: "You're so wise.  Like a miniature buddha covered in hair.",
-	src: "",
-	img: "anchorman.jpg",
-	
-	movie: "Wayne's World",
-	quote: "[You're] a babe.  [You're] a RoboBabe.... If [you] were a president [you] be Baberaham Lincoln.",
-	src: "",
-	img: "waynesWorld.jpg",*/
 	
 });
