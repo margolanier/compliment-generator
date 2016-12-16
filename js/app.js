@@ -13,25 +13,99 @@ $(document).ready(function() {
 	// Randomly select item
 	var name = 'name';
 	var lastCompliment;
-	var randomValue;
 	var index;
 	
 	/**
 	 * Build construct for Compliment objects
 	 * Create array to hold all compliments
 	 */
-	function newCompliment(msg, img) {
+	function newCompliment(src, msg, img) {
 		return {
+			src: src,
 			msg: msg,
 			img: img
 		};
 	}
 	
 	var allCompliments = [
-		newCompliment(name + ', you are amazing.', 'bg1.jpg'), 
-		newCompliment(name + ', you is kind, you is smart, you is important', 'bg2.jpg'),
-		newCompliment(name + ', you\'re dope AF', 'bg3.jpg'),
-		newCompliment('You are the coolest person ever, ' + name, 'bg4.jpg'),
+		newCompliment(
+			"The Help",
+			"You is kind You is smart. You is important.",
+			"theHelp.jpg"
+		),
+		
+		newCompliment(
+			"Goodfellas",
+			"Goddamn you are one suave fuck.",
+			"goodfellas.jpg"
+		),
+		
+		newCompliment(
+			"Office Space",
+			"Boy, that's just a straight shooter with upper management written all over him.",
+			"officeSpace.jpg"
+		),
+		
+		newCompliment(
+			"Star Wars",
+			"The force is strong with this one.",
+			"starWars.jpg"
+		),
+		
+		newCompliment(
+			"The Matrix",
+			"You are the one, *name*.",
+			"matrix.jpg"
+		),
+		
+		newCompliment(
+			"The Lord of the Rings: The Fellowship of the Ring",
+			"I would rather have one lifetime with you than face all the ages of this world alone.",
+			"lordOfTheRings.jpg"
+		),
+		
+		newCompliment(
+			"Princess Bride",
+			"There's a shortage of perfect breasts in this world, it'd be a pity to damage yours.",
+			"princessBride.jpg"
+		),
+		
+		newCompliment(
+			"When Harry Met Sally",
+			"I love that it takes you an hour and a half to order a sandwich.",
+			"whenHarryMetSally.jpg"
+		),
+		
+		newCompliment(
+			"Wet Hot American Summer",
+			"I love it that sometimes for no reason you're late for school.",
+			"wetHotAmericanSummer.jpg"
+		),
+		
+		newCompliment(
+			"Napoleon Dynamite",
+			"I see you're drinking one percent [milk].  Is that because you think you're fat?  Because you're not. You could be drinking whole if you wanted to.",
+			"napoleonDynamite.jpg"
+		),
+		
+		newCompliment(
+			"Juno",
+			"You're like the coolest person I've ever met, and you don't even have to try.",
+			"juno.jpg"
+		),
+		
+		newCompliment(
+			"Anchorman",
+			"You're so wise.  Like a miniature buddha covered in hair.",
+			"anchorman.jpg"
+		),
+		
+		newCompliment(
+			"Wayne's World",
+			"[You're] a babe.  [You're] a RoboBabe.... If [you] were a president [you] be Baberaham Lincoln.",
+			"waynesWorld.jpg"
+		),
+		
 	];
 	
 	
@@ -49,6 +123,7 @@ $(document).ready(function() {
 		console.log('name = ' + name);
 		
 		// Display the compliment div
+		$('#blurred-bg').css('display', 'block');
 		$('#message-wrapper').css('display', 'block');
 		
 		// Reset compliments list
@@ -99,8 +174,9 @@ $(document).ready(function() {
 	 * Change background and message
 	 */
 	function updateMessage() {
-		var bgImg = 'assets/' + allCompliments[index].img;
+		var bgImg = 'assets/backgrounds/' + allCompliments[index].img;
 		var compliment = allCompliments[index].msg;
+		var movie = allCompliments[index].src;
 		
 		// Change background image
 		$('body').css('background-image', 'url(' + bgImg + ')');
@@ -108,6 +184,7 @@ $(document).ready(function() {
 		
 		// Change message
 		document.getElementById('compliment').innerHTML=compliment;
+		document.getElementById('source').innerHTML=movie;
 		
 		index++;
 	}

@@ -1,6 +1,7 @@
-@import 'https://fonts.googleapis.com/css?family=Muli:300,400';
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro';
+@import url('https://fonts.googleapis.com/css?family=Bitter');
 html {
-	padding: .3rem .5rem;
+	/*padding: .3rem .5rem;*/
 }
 
 h1,
@@ -8,13 +9,13 @@ h2,
 h3,
 h4,
 h5 {
-	font-family: 'Muli', Helvetica, sans-serif;
+	font-family: 'Source Sans Pro', Helvetica, sans-serif;
 	font-weight: normal;
 }
 
 body {
 	/*background: #e4e4e4;*/
-	font-family: 'Muli', Helvetica, sans-serif;
+	font-family: 'Source Sans Pro', Helvetica, sans-serif;
 	font-weight: normal;
 	background-image: url();
 	background-repeat: no-repeat;
@@ -24,9 +25,9 @@ body {
 #blurred-bg {
 	position: absolute;
 	top: 0px;
-	right: 0px;
 	bottom: 0px;
 	left: 0px;
+	right: 0px;
 	z-index: 99;
 	filter: blur(10px);
 	-webkit-filter: blur(10px);
@@ -57,10 +58,10 @@ body {
 	text-align: right;
 }
 
-#main-content {
+/*#main-content {
 	display: table;
 	width: 100%;
-}
+}*/
 
 #form-wrapper,
 #message-wrapper {
@@ -71,6 +72,13 @@ body {
 #message-wrapper {
 	position: relative;
 	display: none;
+	/*max-width: 600px;*/
+}
+
+.message {
+	font-family: 'Bitter', Helvetica, serif;
+	font-size: 2rem;
+	line-height: 2.2rem;
 }
 
 #refresh, #share-app {
