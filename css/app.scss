@@ -1,0 +1,39 @@
+@import '../node_modules/foundation-sites/scss/foundation';
+
+@include foundation-global-styles;
+@include foundation-grid;
+
+// breakpoint for tablet and up
+$md-screen: 768px;
+
+$header-color: red;
+$primary-color: #498467;
+$secondary-color: #A6D3A0;
+$border-color: #ccc;
+
+$header-font: 'Catamaran', Helvetica, sans-serif;
+
+
+body {
+	margin: 0;
+	background: url(../assets/bg1.jpg) no-repeat top left / cover;
+}
+
+header {
+	@include grid-row();
+	
+	h1 {
+		@include grid-column(12);
+		font-family: $header-font;
+		font-weight: 700;
+		text-align: center;
+	}
+}
+
+#main {
+	@include grid-row();
+	
+	#form {
+		@include grid-column(12);
+	}
+}

@@ -5,10 +5,12 @@
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<title>Compliment Generator | margolanier.com</title>
 	<meta name="description" content="An experience to brighten your day!">
 	<meta name="author" content="Margo Lanier">
-	<link rel="stylesheet" href="css/foundation.css">
+	<link rel="stylesheet" href="css/foundation.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:700">
 	<link rel="stylesheet" href="css/app.css">
 	
 	<!-- Facebook -->
@@ -31,65 +33,31 @@
 
 <body>
 	<header>
-		<div class="row">
-			<div id="page-title" class="small-12 medium-8 medium-push-2 columns">
-				<h1>Compliment Generator</h1>
-				<p>Need a </p>
-				<h1>Happy <span id="weekday"></span>!</h1>
-			</div>
-
-			<div id="share" class="small-12 medium-2 medium-pull-8 columns">
-				Pay it forward!
-				<a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://margolanier.com&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!"
-				   target="_blank" title="Share on Facebook" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false">
-					<i class="fa fa-facebook" aria-hidden="true"></i> FB
-				</a>
-				
-				<a href="https://twitter.com/home?status=this%20is%20what%20i%20want%20to%20say%20http%3A//agencyq.com"
-				   target="_blank" title="Share on Twitter" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false">
-					<i class="fa fa-email" aria-hidden="true"></i> TW
-				</a>
-			</div>
-
-			<div id="author" class="small-12 medium-2 columns">
-				Author <a href="" title=""><i class="fa fa-github-alt" aria-hidden="true"></i></a>
+		<h1>header</h1>
+	</header>
+	
+	<section id="main">
+		
+		<div id="form" class="input-group">
+			<label class="input-group-label">My name is...</label>
+			
+			<input class="input-group-field" type="text" id="name" placeholder="Slim Shady">
+			
+			<div class="input-group-button">
+				<input type="submit" class="button" value="Submit" id="submit">
 			</div>
 		</div>
-	</header>
-
-	<div id="main-content">
-		<!--<div class="small-12 columns">-->
-			
-			<div id="form-wrapper">
-				<form id="get-user-name" class="input-group">
-					<label class="input-group-label">What's your name?</label>
-					<input class="input-group-field" type="text" id="nameOfUser" placeholder="Placeholder text">
-					<div class="input-group-button">
-						<input type="submit" class="button" value="Submit" id="submit-name">
-					</div>
-				</form>
-			</div>
-
-			<div id="message-wrapper">
-				<div id="blurred-bg"></div>
-				<div id="blurred-box">
-					<p class="message" id="compliment"></p>
-					<p class="source" id = "source"></p>
-					<p><button id="next-compliment" class="button">Next compliment, please</button></p>
-					<p><button id="refresh" class="button">Next compliment, please</button></p>
-					<input type="button" value="Start Over" onClick="window.location.reload()" class="button">
-					<div id="share-app">
-						<p>Share with other humans!</p>
-					</div>
-				</div>
-			</div>
-			
-		<!--</div>-->
-	</div><!-- .main-content -->
+		
+	</section>
 	
-	<script src="js/vendor/jquery.js"></script>
-	<script src="js/vendor/what-input.js"></script>
-	<script src="js/vendor/foundation.js"></script>
+	<section id="message">
+		<p class="compliment"></p>
+		<p class="title"></p>
+		<p><button id="next" class="button">Keep 'em coming</button></p>
+	</section>
+	
+	<script src="js/jquery.js"></script>
+	<script src="js/foundation.min.js"></script>
 	<script src="js/app.js"></script>
 </body>
 
