@@ -32,29 +32,32 @@
 </head>
 
 <body>
-	<header>
-		<h1>header</h1>
-	</header>
-	
-	<section id="main">
+	<div id="overlay">
 		
-		<div id="form" class="input-group">
-			<label class="input-group-label">My name is...</label>
+		<header>
+			<h1>header</h1>
+		</header>
+		
+		<section id="main">
 			
-			<input class="input-group-field" type="text" id="name" placeholder="Slim Shady">
-			
-			<div class="input-group-button">
-				<input type="submit" class="button" value="Submit" id="submit">
+			<div id="form" class="input-group">
+				<label class="input-group-label">My name is...</label>
+				
+				<input class="input-group-field" type="text" id="name" placeholder="Slim Shady">
+				
+				<div class="input-group-button">
+					<input type="submit" class="button" value="Submit" id="submit">
+				</div>
 			</div>
-		</div>
+			
+		</section>
 		
-	</section>
-	
-	<section id="message">
-		<p class="compliment"></p>
-		<p class="title"></p>
-		<p><button id="next" class="button">Keep 'em coming</button></p>
-	</section>
+		<section id="message">
+			<p class="compliment"></p>
+			<p class="title"></p>
+			<p><button id="next" class="button">Keep 'em coming</button></p>
+		</section>
+	</div>
 	
 	<script src="js/jquery.js"></script>
 	<script src="js/foundation.min.js"></script>

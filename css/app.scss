@@ -17,6 +17,13 @@ $header-font: 'Catamaran', Helvetica, sans-serif;
 body {
 	margin: 0;
 	background: url(../assets/default.jpg) no-repeat top left / cover;
+	transition: all 0.5s ease-out;
+	// need to make all images same size
+}
+
+#overlay {
+	background: rgba(0, 0, 0, 0.5);
+	height: 100%;
 }
 
 header {
@@ -51,5 +58,13 @@ section {
 		font-weight: 700;
 		color: white;
 		text-transform: uppercase;
+	}
+	
+	.title {
+		@include grid-column(12);
+	}
+	
+	#next {
+		@include grid-column(12);
 	}
 }

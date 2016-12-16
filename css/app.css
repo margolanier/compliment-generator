@@ -1290,7 +1290,12 @@ button {
     float: left; } }
 body {
   margin: 0;
-  background: url(../assets/default.jpg) no-repeat top left/cover; }
+  background: url(../assets/default.jpg) no-repeat top left/cover;
+  transition: all 0.5s ease-out; }
+
+#overlay {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%; }
 
 header {
   max-width: 75rem;
@@ -1356,6 +1361,28 @@ section {
       padding-left: 0.9375rem;
       padding-right: 0.9375rem; } }
   #message .compliment:last-child:not(:first-child) {
+    float: right; }
+#message .title {
+  width: 100%;
+  float: left;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem; }
+  @media screen and (min-width: 40em) {
+    #message .title {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  #message .title:last-child:not(:first-child) {
+    float: right; }
+#message #next {
+  width: 100%;
+  float: left;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem; }
+  @media screen and (min-width: 40em) {
+    #message #next {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+  #message #next:last-child:not(:first-child) {
     float: right; }
 
 /*# sourceMappingURL=app.css.map */

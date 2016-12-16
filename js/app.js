@@ -36,7 +36,7 @@ function getMessage(name) {
 window.addEventListener('load', init);
 
 
-
+// eventually will use variable in message
 let compliments = [
 {	title: "The Help",
 	quote: "You is kind You is smart. You is important.",
