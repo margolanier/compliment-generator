@@ -16,7 +16,7 @@ $header-font: 'Catamaran', Helvetica, sans-serif;
 
 body {
 	margin: 0;
-	background: url(../assets/bg1.jpg) no-repeat top left / cover;
+	background: url(../assets/default.jpg) no-repeat top left / cover;
 }
 
 header {
@@ -25,15 +25,31 @@ header {
 	h1 {
 		@include grid-column(12);
 		font-family: $header-font;
+		font-size: 3rem;
 		font-weight: 700;
 		text-align: center;
+		color: white;
 	}
 }
 
-#main {
+section {
 	@include grid-row();
-	
+}
+
+#main {
 	#form {
 		@include grid-column(12);
+	}
+}
+
+#message {
+	.compliment {
+		@include grid-column(7);
+		font-family: $header-font;
+		font-size: 2rem;
+		line-height: 2rem;
+		font-weight: 700;
+		color: white;
+		text-transform: uppercase;
 	}
 }

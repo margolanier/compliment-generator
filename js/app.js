@@ -3,7 +3,6 @@ let name = textbox.value;
 let i = 0;
 
 function init() {
-	console.log('ready');
 	
 	let submit = document.querySelector('#submit');
 	submit.addEventListener('click', getMessage);
@@ -13,13 +12,23 @@ function init() {
 }
 
 function getMessage(name) {
+	
+	// Hide form
+	let form = document.querySelector('#form');
+	form.style.display = 'none';
+	
 	let parent = document.querySelector('#message');
 	
+	// Update compliment and image
 	let compliment = document.querySelector('.compliment');
 	compliment.textContent = compliments[i].quote;
 	
 	let title = document.querySelector('.title');
 	title.textContent = compliments[i].title;
+	
+	let body = document.querySelector('body');
+	let bg = 'url(assets/backgrounds/' + compliments[i].image + ') no-repeat top left / cover';
+	body.style.background = bg;
 	
 	i++;
 }
